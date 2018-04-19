@@ -1,0 +1,16 @@
+version: '2'
+services:
+  web:
+    build: .
+    environment:
+      NODE_ENV: development
+    command: node_modules/.bin/nodemon --exec npm start
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongodb
+    volumes:
+      - .:/home/app/api
+      - /home/app/api/node_modules
+  mongodb:
+    image: mongo:3.6.3

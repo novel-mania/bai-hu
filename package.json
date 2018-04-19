@@ -1,0 +1,49 @@
+{
+  "name": "bai-hu",
+  "version": "1.0.0",
+  "description": "Back-End da Plataforma da Novel Mania",
+  "main": "server.js",
+  "scripts": {
+    "start": "babel-node ./server.js",
+    "test": "npm run test:unit && npm run test:integration && npm run test:contract",
+    "eslint": "eslint '**/*.js'",
+    "eslint:fix": "npm run eslint -- --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/novel-mania/bai-hu.git"
+  },
+  "keywords": [
+    "Novel",
+    "Mania",
+    "back-end",
+    "rest",
+    "CMS"
+  ],
+  "author": "Rubens Pereira <iorubenspn@gmail.com>",
+  "contributors": [
+    "Henrique Couto"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/novel-mania/bai-hu/issues"
+  },
+  "homepage": "https://github.com/novel-mania/bai-hu#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "config": "^1.30.0",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.15"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "nodemon": "^1.17.3",
+    "supertest": "^3.0.0"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "extends": "airbnb-base",
+  "env": {
+    "node": true,
+    "mocha": true
+  },
+  "globals": {
+    "expect": true,
+    "app": true,
+    "td": true,
+    "request": true,
+    "Joi": true,
+    "joiAssert": true
+  }
+}
+
