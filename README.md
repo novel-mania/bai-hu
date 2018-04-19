@@ -45,3 +45,11 @@ Há um `docker-compose` para rodar os testes da aplicação, com ele haverá a c
 Para executar os testes é só executar o seguinte comando:
 
 ```docker-compose -f docker-compose.test.yml up --abort-on-container-exit | grep "test_1"```
+
+### Git Flow
+
+O projeto está usando o *Git Flow* para organizar o fluxo do projeto, portanto após clonar inicialize-o:
+- Instale o [Git Flow](https://github.com/nvie/gitflow/wiki/Installation).
+- Inicialize-o com as configurações padrão: `git flow init -fd`.
+
+Para um melhor entendimento do Git Flow, utilize esse [cheatsheet](https://danielkummer.github.io/git-flow-cheatsheet/index.pt_BR.html).
