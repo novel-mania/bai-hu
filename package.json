@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "babel-node ./server.js",
-    "test": "npm run test:unit && npm run test:integration && npm run test:contract",
+    "dev": "npm run eslint && npm run start",
+    "test": "npm run test:unit",
+    "test:unit": "NODE_ENV=test mocha --opts test/unit/mocha.opts test/unit/**/*.spec.js",
     "eslint": "eslint '**/*.js'",
     "eslint:fix": "npm run eslint -- --fix"
   },
@@ -34,6 +36,7 @@
     "config": "^1.30.0",
     "cors": "^2.8.4",
     "express": "^4.16.3",
+    "express-validator": "^5.1.2",
     "mongoose": "^5.0.15"
   },
   "devDependencies": {
@@ -43,7 +46,9 @@
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.11.0",
+    "mocha": "^5.1.1",
     "nodemon": "^1.17.3",
+    "sinon": "^4.5.0",
     "supertest": "^3.0.0"
   }
 }

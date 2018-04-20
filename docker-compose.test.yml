@@ -4,6 +4,7 @@ services:
     build: .
     environment:
       NODE_ENV: development
+    tty: true
     command: npm test
     ports:
       - 3000:3000

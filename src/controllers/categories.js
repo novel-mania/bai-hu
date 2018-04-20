@@ -1,4 +1,4 @@
-const format = category = ({
+const format = category => ({
   id: category.id,
   name: category.name,
 });
@@ -8,47 +8,38 @@ class CategoriesController {
     this.Categories = Categories;
   }
 
-  get(req, res) {
+  get() {
     return this.Categories.find({})
       .then(categories => ({
-        data: categories.map(format)
-      }))
-      .then(categories => res.send(categories))
-      .catch(err => res.status(400).send(err.message));
+        data: categories.map(format),
+      }));
   }
 
-  getById(req, res) {
-    const { params: { id } } = req;
-
-    return this.Categories.find({ _id: id })
-      .then(format)
-      .then(category => res.send(category))
-      .catch(err => res.status(400).send(err.message));
+  getById(id) {
+    return this.Categories.findOne({ _id: id })
+      .then(category => ({
+        data: format(category),
+      }));
   }
 
-  create(req, res) {
-    const category = new this.Categories(req.body);
+  create(data) {
+    const category = new this.Categories(data);
 
     return category.save()
-      .then(format)
-      .then(category => res.status(201).send(category))
-      .catch(err => res.status(400).send(err.message));
+      .then(result => ({
+        data: format(result),
+      }));
   }
 
-  update(req, res) {
-    const { params: { id } } = req;
-
-    return this.Categories.findOneAtUpdate({ _id: id }, req.body)
-      .then(() => res.sendStatus(200))
-      .catch(err => res.status(400).send(err.message));
+  update(id, data) {
+    return this.Categories.findOneAndUpdate({ _id: id }, data)
+      .then(category => ({
+        data: format(category),
+      }));
   }
 
-  remove(req, res) {
-    const { params: { id } } = req;
-
-    return this.Categories.remove({ _id: id })
-      .then(() => res.sendStatus(204))
-      .catch(err => res.status(400).send(err.message));
+  remove(id) {
+    return this.Categories.remove({ _id: id });
   }
 }
 
