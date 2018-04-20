@@ -4,7 +4,7 @@ services:
     build: .
     environment:
       NODE_ENV: development
-    command: node_modules/.bin/nodemon --exec npm start
+    command: node_modules/.bin/nodemon -L --exec npm start
     ports:
       - 3000:3000
     depends_on:
