@@ -1,0 +1,15 @@
+language: node_js
+dist: trusty
+sudo: required
+cache: yarn
+node_js:
+  - 9.11.1
+services:
+  - mongodb
+install:
+  - yarn
+before_script:
+  - sleep 10
+  - mongo novelmania-test --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
+script:
+  - npm test

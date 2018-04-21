@@ -6,11 +6,9 @@
   },
   "globals": {
     "expect": true,
-    "app": true,
-    "td": true,
-    "request": true,
-    "Joi": true,
-    "joiAssert": true
+    "setupApp": true,
+    "supertest": true,
+    "request": true
   }
 }
 
