@@ -69,7 +69,7 @@ describe('Routes: Categories', () => {
           {},
           { id: defaultId },
           customCategory,
-          defaultCategory
+          defaultCategory,
         );
 
         request
