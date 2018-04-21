@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - 9.11.1
+sudo: false
+install:
+  - npm install --silence --progress=false
+script:
+  - npm test
