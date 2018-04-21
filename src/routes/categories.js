@@ -15,7 +15,7 @@ router.route('/')
       .catch(err => res.status(400).send(err.message)))
   .post(schemaCategories, validatorMiddleware, (req, res) =>
     categoriesController.create(matchedData(req))
-      .then(result => res.status(201).send(result))
+      .then(category => res.status(201).send(category))
       .catch(err => res.status(400).send(err.message)));
 
 router.route('/:id')
@@ -28,7 +28,7 @@ router.route('/:id')
   .put(schemaCategories, validatorMiddleware, (req, res) => {
     const { params: { id } } = req;
     return categoriesController.update(id, matchedData(req))
-      .then(() => res.sendStatus(200))
+      .then(category => res.status(200).send(category))
       .catch(err => res.status(400).send(err.message));
   })
   .delete((req, res) => {
