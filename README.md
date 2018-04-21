@@ -1,4 +1,5 @@
 # Bai Hu - Back-End da plataforma da Novel Mania
+[![Build Status](https://travis-ci.org/novel-mania/bai-hu.svg?branch=develop)](https://travis-ci.org/novel-mania/bai-hu)
 
 ## Get Started
 
