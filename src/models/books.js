@@ -12,11 +12,18 @@ const shema = new mongoose.Schema({
   rating: Number,
   categories: [String],
   advisory_rating: String,
-  sponsorship: { name: String, url: String },
+  sponsorship: {
+    name: String,
+    url: String,
+  },
   team: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }],
-  recommendations: [{ name: String, url: String, image: String }],
-  chapter: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Chapters' }],
-  comment: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comments' }],
+  recommendations: [{
+    name: String,
+    url: String,
+    image: String,
+  }],
+  chapters: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Chapters' }],
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comments' }],
 });
 
 const Books = mongoose.model('Books', shema);
