@@ -5,6 +5,7 @@ import booksRoute from './books';
 import usersRoute from './users';
 import postsRouter from './posts';
 import marksRoute from './marks';
+import chaptersRoute from './chapters';
 
 export default (app) => {
   const router = express.Router();
