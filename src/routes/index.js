@@ -3,6 +3,7 @@ import authenticationRoute from './auth';
 import categoriesRoute from './categories';
 import booksRoute from './books';
 import usersRoute from './users';
+import postsRouter from './posts';
 
 export default (app) => {
   const router = express.Router();
@@ -11,6 +12,7 @@ export default (app) => {
   router.use('/books', app.auth.authenticate(), booksRoute);
   router.use('/auth', authenticationRoute);
   router.use('/users', usersRoute);
+router.use('chapters', postsRouter);
   router.get('/', (req, res) => {
     res.json({ msg: 'Plataforma Novel Mania' });
   });
