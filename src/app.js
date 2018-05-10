@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import passport from 'passport';
 import routes from './routes';
 import database from '../config/database';
 
@@ -18,6 +19,8 @@ const configureExpress = () => {
     err.status = 404;
     next(err);
   });
+  // Passport initialize
+  app.use(passport.initialize());
   // Error handler
   app.use((err, req, res) => {
     // Set locals, only providing error in development
