@@ -12,6 +12,13 @@ const schema = new mongoose.Schema({
   role: { type: mongoose.Schema.Types.ObjectId, ref: 'Roles' },
 });
 
+class User {
+  isPassword(encodedPassword, password) {
+    return bcrypt.compareSync(password, encodedPassword);
+  }
+}
+
+schema.loadClass(User);
 schema.pre('save', (next) => {
   const user = this;
   const salt = bcrypt.genSaltSync();
