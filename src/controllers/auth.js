@@ -10,7 +10,7 @@ export default () => {
 
   const strategy = new Strategy(opts, (payload, done) => {
     Users.findById(payload.id)
-      .then(user => {
+      .then((user) => {
         if (user) {
           return done(null, {
             id: user.id,
@@ -28,4 +28,4 @@ export default () => {
     initialize: () => passport.initialize(),
     authenticate: () => passport.authenticate('jwt', config.get('authentication.jwtSession')),
   };
-}
+};

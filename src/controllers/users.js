@@ -47,14 +47,6 @@ class UsersController {
   remove(id) {
     return this.Users.remove({ _id: id });
   }
-
-  auth(data) {
-    const auth = new this.Auth(this.Users);
-    return auth.authenticate(data)
-      .then(user => ({
-        data: format(user),
-      }));
-  }
 }
 
 export default UsersController;
