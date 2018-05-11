@@ -13,7 +13,7 @@ const schema = new mongoose.Schema({
 });
 
 class User {
-  isPassword(encodedPassword, password) {
+  static isPassword(encodedPassword, password) {
     return bcrypt.compareSync(password, encodedPassword);
   }
 }
