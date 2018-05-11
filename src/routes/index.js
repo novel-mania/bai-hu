@@ -4,7 +4,7 @@ import categoriesRoute from './categories';
 import booksRoute from './books';
 import usersRoute from './users';
 
-export default app => {
+export default (app) => {
   const router = express.Router();
 
   router.use('/categories', categoriesRoute);
@@ -16,5 +16,5 @@ export default app => {
   });
 
   app.use(router);
-}
+};
 

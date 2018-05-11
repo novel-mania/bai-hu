@@ -11,7 +11,7 @@ router.post('/token', (req, res) => {
     const password = req.body.password;
 
     Users.findOne({ where: { email } })
-      .then(user => {
+      .then((user) => {
         if (Users.isPassword(user.password, password)) {
           const payload = { id: user.id };
           res.json({

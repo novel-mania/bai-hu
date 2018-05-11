@@ -1,7 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import passport from 'passport';
 import routes from './routes';
 import authorization from './controllers/auth';
 import database from '../config/database';

@@ -1,6 +1,6 @@
 {
   "database": {
-    "mongoUrl": "mongodb://mongodb/novelmania"
+    "mongoUrl": "mongodb://localhost/novelmania"
   },
   "authentication": {
     "jwtSecret": "secret",
