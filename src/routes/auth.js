@@ -7,8 +7,7 @@ const router = express.Router();
 
 router.post('/token', (req, res) => {
   if (req.body.email && req.body.password) {
-    const email = req.body.email;
-    const password = req.body.password;
+    const { email, password } = req.body;
 
     Users.findOne({ where: { email } })
       .then((user) => {
