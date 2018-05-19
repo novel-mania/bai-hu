@@ -1,6 +1,6 @@
-import mongoose, { mongo } from 'mongoose';
+import mongoose from 'mongoose';
 
-const volume_schema = new mongoose.Schema({
+const volumeSchema = new mongoose.Schema({
   name: String,
   volume_num: Number,
 });
@@ -10,9 +10,9 @@ const schema = new mongoose.Schema({
   chapter_num: Number,
   content: String,
   likes: Number,
-  translators: [{ type: mongoose.Schema.Types.ObjectId, ref: "Users" }],
-  reviewers: [{ type: mongoose.Schema.Types.ObjectId, ref: "Users" }],
-  volume: volume_schema,
+  translators: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }],
+  reviewers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }],
+  volume: volumeSchema,
   marks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Marks' }],
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comments' }],
 });
