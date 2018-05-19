@@ -1,4 +1,5 @@
 const format = mark => ({
+  id: mark.id,
   users: mark.users,
   chapters: mark.chapters,
 });
@@ -31,8 +32,8 @@ class MarksController {
       }));
   }
 
-  update(data, id) {
-    return this.Marks.findByIdAndUpdate({ _id: id }, data)
+  update(id, data) {
+    return this.Marks.findOneAndUpdate({ _id: id }, data)
       .then(mark => ({
         data: format(mark),
       }));
