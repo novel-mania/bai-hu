@@ -1,13 +1,20 @@
 import express from 'express';
+import authenticationRoute from './auth';
 import categoriesRoute from './categories';
 import booksRoute from './books';
+import usersRoute from './users';
 
-const router = express.Router();
+export default (app) => {
+  const router = express.Router();
 
-router.use('/categories', categoriesRoute);
-router.use('/books', booksRoute);
-router.get('/', (req, res) => {
-  res.json({ msg: 'Plataforma Novel Mania' });
-});
+  router.use('/categories', categoriesRoute);
+  router.use('/books', app.auth.authenticate(), booksRoute);
+  router.use('/auth', authenticationRoute);
+  router.use('/users', usersRoute);
+  router.get('/', (req, res) => {
+    res.json({ msg: 'Plataforma Novel Mania' });
+  });
 
-export default router;
+  app.use(router);
+};
+

@@ -1,5 +1,9 @@
 {
   "database": {
     "mongoUrl": "mongodb://mongodb/novelmania"
+  },
+  "authentication": {
+    "jwtSecret": "secret",
+    "jwtSession": { "session": false }
   }
 }

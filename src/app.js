@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import routes from './routes';
+import authorization from './controllers/auth';
 import database from '../config/database';
 
 const app = express();
@@ -11,7 +12,10 @@ const configureExpress = () => {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(cors());
 
-  app.use('/', routes);
+  const auth = authorization(app);
+  app.auth = auth;
+
+  routes(app);
   // Catch 404 and forward to error handler
   app.use((req, res, next) => {
     const err = new Error('Not Found');
