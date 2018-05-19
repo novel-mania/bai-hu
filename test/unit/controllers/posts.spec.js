@@ -73,7 +73,7 @@ describe('Controllers: Posts', () => {
 
   describe('create()', () => {
     before(() => {
-      stub = sinon.stub(Posts, 'create');
+      stub = sinon.stub(Posts.prototype, 'save');
     });
 
     after(() => {
