@@ -3,7 +3,7 @@ import authenticationRoute from './auth';
 import categoriesRoute from './categories';
 import booksRoute from './books';
 import usersRoute from './users';
-import postsRouter from './posts';
+import postsRoute from './posts';
 import marksRoute from './marks';
 import chaptersRoute from './chapters';
 
@@ -14,8 +14,9 @@ export default (app) => {
   router.use('/books', app.auth.authenticate(), booksRoute);
   router.use('/auth', authenticationRoute);
   router.use('/users', usersRoute);
-router.use('chapters', postsRouter);
-router.use('/marks', marksRoute);
+  router.use('/chapters', chaptersRoute);
+  router.use('/posts', postsRoute);
+  router.use('/marks', marksRoute);
   router.get('/', (req, res) => {
     res.json({ msg: 'Plataforma Novel Mania' });
   });
