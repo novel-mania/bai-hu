@@ -38,7 +38,7 @@ class UsersController {
   }
 
   update(id, data) {
-    return this.Users.findoneAndUpdate({ _id: id }, data)
+    return this.Users.findOneAndUpdate({ _id: id }, data)
       .then(user => ({
         data: format(user),
       }));
