@@ -2,7 +2,7 @@ const format = book => ({
   id: book.id,
   name: book.name,
   alternatives_titles: book.alternatives_titles,
-  author: book.author,
+  authors: book.authors,
   slug: book.slug,
   type: book.type,
   cover: book.cover,
@@ -45,7 +45,7 @@ class BooksController {
   }
 
   update(id, data) {
-    return this.Books.findoneAndUpdate({ _id: id }, data)
+    return this.Books.findOneAndUpdate({ _id: id }, data)
       .then(book => ({
         data: format(book),
       }));
