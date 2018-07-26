@@ -17,8 +17,8 @@ describe('Controllers: Books', () => {
     advisory_rating: 'rating',
     sponsorship: { name: 'padrim', url: 'http://padrim.com.br/novel' },
     recommendations: { name: 'recommendation', url: 'rec.com.br', image: 'http://novelmania.com.br/rec.png' },
-    chapter: ['1', '2', '3', '4', '5'],
-    comment: ['100', '101'],
+    chapters: ['1', '2', '3', '4', '5'],
+    comments: ['100', '101'],
   };
   let stub;
 
@@ -130,8 +130,8 @@ describe('Controllers: Books', () => {
         advisory_rating: 'rating',
         sponsorship: { name: 'padrim', url: 'http://padrim.com.br/novel' },
         recommendations: { name: 'recommendation', url: 'rec.com.br', image: 'http://novelmania.com.br/rec.png' },
-        chapter: ['1', '2', '3', '4', '5'],
-        comment: ['100', '101'],
+        chapters: ['1', '2', '3', '4', '5'],
+        comments: ['100', '101'],
       };
 
       stub.withArgs({ _id: id }, updatedBook).resolves(updatedBook);

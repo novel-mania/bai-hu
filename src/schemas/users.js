@@ -16,6 +16,11 @@ export default checkSchema({
     in: 'body',
     errorMessage: 'Property must be passed: email',
   },
+  password: {
+    exists: true,
+    in: 'body',
+    errorMessage: 'Property must be passed: password',
+  },
   role: {
     exists: true,
     in: 'body',

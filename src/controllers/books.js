@@ -12,8 +12,8 @@ const format = book => ({
   advisory_rating: book.advisory_rating,
   sponsorship: book.sponsorship,
   recommendations: book.recommendations,
-  chapter: book.chapter,
-  comment: book.comment,
+  chapters: book.chapters,
+  comments: book.comments,
 });
 
 class BooksController {

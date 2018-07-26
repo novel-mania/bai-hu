@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const schema = new mongoose.Schema({
-  users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Marks' }],
+  users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }],
   chapters: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Chapters' }],
 });
 
