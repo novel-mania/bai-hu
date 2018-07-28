@@ -11,6 +11,10 @@ const usersController = new UsersController(Users);
 router.route('/')
   .get((req, res) =>
     usersController.get()
+      .then(users => {
+        console.log(users);
+        return users;
+      })
       .then(users => res.send(users))
       .catch(err => res.status(400).send(err.message)))
   .post(schemaUsers, validatorMiddleware, (req, res) =>

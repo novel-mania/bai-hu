@@ -19,10 +19,9 @@ class User {
 }
 
 schema.loadClass(User);
-schema.pre('save', (next) => {
-  const user = this;
+schema.pre('save', function (next) {
   const salt = bcrypt.genSaltSync();
-  user.password = bcrypt.hashSync(user.password, salt);
+  this.password = bcrypt.hashSync(this.password, salt);
   next();
 });
 

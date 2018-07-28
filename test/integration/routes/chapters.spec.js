@@ -3,7 +3,6 @@ import Chapters from '../../../src/models/chapters';
 describe('Routes: Chapters', () => {
   let request;
   const defaultId = '56cb91bdc3464f14678934cb';
-  const defaultVolumeId = '56cb91bdc3464f14678934cf';
   const defaultChapter = {
     name: 'Chapter 1',
     chapter_num: 1,
@@ -24,7 +23,6 @@ describe('Routes: Chapters', () => {
     translators: [ '56cb91bdc3464f14678934ca' ],
     reviewers: [ '56cb91bdc3464f14678934cc' ],
     volume: {
-      _id: defaultVolumeId,
       name: 'Volume 1',
       volume_num: 1,
     },
@@ -39,7 +37,6 @@ describe('Routes: Chapters', () => {
     const chapter = new Chapters(defaultChapter);
     /* eslint-disable-next-line no-underscore-dangle */
     chapter._id = '56cb91bdc3464f14678934cb';
-    chapter.volume._id = '56cb91bdc3464f14678934cf';
     return Chapters.remove({})
       .then(() => chapter.save());
   });
@@ -74,7 +71,6 @@ describe('Routes: Chapters', () => {
           translators: [ '56cb91bdc3464f14678934ca' ],
           reviewers: [ '56cb91bdc3464f14678934cc' ],
           volume: {
-            _id: defaultVolumeId,
             name: 'Volume 1',
             volume_num: 1,
           },
@@ -85,7 +81,7 @@ describe('Routes: Chapters', () => {
           .post('/chapters')
           .send(newChapter)
           .expect(201)
-          .end((err, res) => {           
+          .end((err, res) => {
             expect(res.body.data._id).to.be.eql(newChapter._id);
             done(err);
           });
@@ -115,7 +111,7 @@ describe('Routes: Chapters', () => {
           customChapter,
           defaultChapter,
         );
-        
+
         request
           .put(`/chapters/${defaultId}`)
           .send(customChapter)

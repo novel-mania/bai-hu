@@ -5,6 +5,7 @@ const format = user => ({
   email: user.email,
   books: user.books,
   posts: user.posts,
+  marks: user.marks,
   role: user.role,
 });
 
@@ -17,7 +18,7 @@ class UsersController {
   get() {
     return this.Users.find({})
       .then(users => ({
-        data: users.map(format),
+        data: users.map(format)
       }));
   }
 

@@ -5,16 +5,14 @@ RUN useradd --user-group --create-home --shell /bin/false app &&\
 
 ENV HOME=/home/app
 
-COPY package.json package-lock.json $HOME/api/
-RUN chown -R app:app $HOME/*
+COPY --chown=app:app package.json package-lock.json $HOME/api/
 
 USER app
 WORKDIR $HOME/api
 RUN npm cache verify && npm install
 
 USER root
-COPY . $HOME/api
-RUN chown -R app:app $HOME/*
+COPY --chown=app:app . $HOME/api
 USER app
 
 CMD ["npm", "start"]

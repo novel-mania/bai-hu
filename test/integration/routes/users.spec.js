@@ -18,7 +18,6 @@ describe('Routes: Users', () => {
     name: 'user name',
     profile_photo: 'user photo',
     email: 'user@email.com',
-    password: 'userpassword',
     books: [ '56cb91bdc3464f14678934cd' ],
     posts: [ '56cb91bdc3464f14678934ce' ],
     marks: [ '56cb91bdc3464f14678934cf' ],
@@ -34,7 +33,9 @@ describe('Routes: Users', () => {
     /* eslint-disable-next-line no-underscore-dangle */
     user._id = '56cb91bdc3464f14678934cb';
     return Users.remove({})
-      .then(() => user.save());
+      .then(() => {
+        user.save();
+      });
   });
 
   afterEach(() => Users.remove({}));
@@ -71,7 +72,7 @@ describe('Routes: Users', () => {
           .post('/users')
           .send(newUser)
           .expect(201)
-          .end((err, res) => {           
+          .end((err, res) => {
             expect(res.body.data._id).to.be.eql(newUser._id);
             done(err);
           });
@@ -95,7 +96,7 @@ describe('Routes: Users', () => {
           customUser,
           defaultUser,
         );
-        
+
         request
           .put(`/users/${defaultId}`)
           .send(customUser)
