@@ -11,6 +11,7 @@ describe('Controllers: Users', () => {
     email: 'henriquectatagiba@gmail.com',
     books: ['1'],
     posts: ['1'],
+    marks: ['1'],
   };
   let stub;
 
@@ -98,10 +99,12 @@ describe('Controllers: Users', () => {
       });
     });
   });
+
   describe('put()', () => {
     before(() => {
       stub = sinon.stub(Users, 'findOneAndUpdate');
     });
+
     after(() => {
       stub.restore();
     });
@@ -116,6 +119,7 @@ describe('Controllers: Users', () => {
         email: 'henriquectatagiba@gmail.com',
         books: ['1'],
         posts: ['1'],
+        marks: ['1'],
       };
 
       stub.withArgs({ _id: id }, updatedUser).resolves(updatedUser);

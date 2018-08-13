@@ -8,9 +8,9 @@ describe('Routes: Users', () => {
     profile_photo: 'user photo',
     email: 'user@email.com',
     password: 'userpassword',
-    books: [ '56cb91bdc3464f14678934cd' ],
-    posts: [ '56cb91bdc3464f14678934ce' ],
-    marks: [ '56cb91bdc3464f14678934cf' ],
+    books: [],
+    posts: [],
+    marks: [],
     role: '56cb91bdc3464f14678934dd',
   };
   const expectedUser = {
@@ -18,9 +18,9 @@ describe('Routes: Users', () => {
     name: 'user name',
     profile_photo: 'user photo',
     email: 'user@email.com',
-    books: [ '56cb91bdc3464f14678934cd' ],
-    posts: [ '56cb91bdc3464f14678934ce' ],
-    marks: [ '56cb91bdc3464f14678934cf' ],
+    books: [],
+    posts: [],
+    marks: [],
     role: '56cb91bdc3464f14678934dd',
   };
 
@@ -33,9 +33,7 @@ describe('Routes: Users', () => {
     /* eslint-disable-next-line no-underscore-dangle */
     user._id = '56cb91bdc3464f14678934cb';
     return Users.remove({})
-      .then(() => {
-        user.save();
-      });
+      .then(() => user.save());
   });
 
   afterEach(() => Users.remove({}));
@@ -60,20 +58,14 @@ describe('Routes: Users', () => {
   describe('POST /users', () => {
     context('when usering a user', () => {
       it('should return a new user with status code 201', (done) => {
-        const newUser = {
-          title: 'User 2',
-          content: 'User content 2',
-          author: '56cb91bdc3464f14678934cc',
-          book: '56cb91bdc3464f14678934ce',
-          tags: [ 'test', 'test 2' ],
-        };
-
         request
           .post('/users')
-          .send(newUser)
+          .send(defaultUser)
           .expect(201)
           .end((err, res) => {
-            expect(res.body.data._id).to.be.eql(newUser._id);
+            const newUser = Object.assign({}, expectedUser);
+            newUser.id = res.body.data.id;
+            expect(res.body.data).to.be.eql(newUser);
             done(err);
           });
       });
@@ -84,24 +76,21 @@ describe('Routes: Users', () => {
     context('when editing a user', () => {
       it('should update the user and return 200 as status code', (done) => {
         const customUser = {
-          title: 'User 3',
-          content: 'User content 3',
-          author: '56cb91bdc3464f14678934cc',
-          book: '56cb91bdc3464f14678934ce',
-          tags: [ 'test', 'test 2' ],
+          name: 'new username',
+          profile_photo: 'user photo',
+          email: 'user@email.com',
+          password: 'userpassword',
+          books: [],
+          posts: [],
+          marks: [],
+          role: '56cb91bdc3464f14678934dd',
         };
-        const updatedUser = Object.assign(
-          {},
-          { id: defaultId },
-          customUser,
-          defaultUser,
-        );
 
         request
           .put(`/users/${defaultId}`)
           .send(customUser)
           .expect(200)
-          .expect({ data: updatedUser }, done);
+          .expect({ data: expectedUser }, done);
       });
     });
   });
