@@ -1,5 +1,5 @@
 {
   "database": {
-    "mongoUrl": "mongodb://mongodb/novelmania-test"
+    "mongoUrl": "mongodb://localhost/novelmania-test"
   }
 }
