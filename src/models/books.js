@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 
 const shema = new mongoose.Schema({
-  creator: { type: mongoose.Schema.Types.ObjectId, ref: 'Users' },
   name: String,
   alternatives_titles: [String],
   authors: [String],

@@ -11,7 +11,7 @@ export default (app) => {
   const router = express.Router();
 
   router.use('/categories', categoriesRoute);
-  router.use('/books', app.auth.authenticate(), booksRoute);
+  router.use('/books', booksRoute);
   router.use('/auth', authenticationRoute);
   router.use('/users', usersRoute);
   router.use('/chapters', chaptersRoute);

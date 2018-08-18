@@ -46,9 +46,4 @@ export default checkSchema({
     in: 'body',
     errorMessage: 'Property must be passed: advisory_rating',
   },
-  creator: {
-    exists: true,
-    in: 'body',
-    errorMessage: 'Property must be passed: creator',
-  },
 });
