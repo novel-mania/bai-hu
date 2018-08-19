@@ -1,6 +1,7 @@
 const format = chapter => ({
   id: chapter.id,
   name: chapter.name,
+  novel: chapter.novel,
   chapter_num: chapter.chapter_num,
   content: chapter.content,
   translators: chapter.translators,
@@ -13,12 +14,16 @@ const format = chapter => ({
 });
 
 class ChaptersController {
-  constructor(Chapters) {
+  constructor(Novels, Chapters) {
+    this.Novels = Novels;
     this.Chapters = Chapters;
   }
 
-  get() {
-    return this.Chapters.find({})
+  get(novel) {
+    const where = {};
+    if (novel) where.novel = novel;
+    return this.Chapters.find(where)
+      .populate('novel')
       .then(chapters => ({
         data: chapters.map(format),
       }));
@@ -31,13 +36,23 @@ class ChaptersController {
       }));
   }
 
-  create(data) {
+  async create(novelId, data) {
     const chapter = new this.Chapters(data);
+    chapter.novel = novelId;
 
-    return chapter.save()
-      .then(result => ({
-        data: format(result),
-      }));
+    try {
+      const newChapter = await chapter.save();
+
+      const novel = await this.Novels.findOne({ _id: novelId });
+      novel.chapters.push(newChapter);
+      await novel.save();
+
+      return {
+        data: format(newChapter),
+      };
+    } catch(error) {
+      throw error;
+    }
   }
 
   update(id, data) {

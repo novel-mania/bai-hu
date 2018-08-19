@@ -25,6 +25,6 @@ const shema = new mongoose.Schema({
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comments' }],
 });
 
-const Books = mongoose.model('Books', shema);
+const Novels = mongoose.model('Novels', shema);
 
-export default Books;
+export default Novels;

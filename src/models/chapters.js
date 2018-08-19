@@ -6,6 +6,7 @@ const volumeSchema = new mongoose.Schema({
 });
 
 const schema = new mongoose.Schema({
+  novel: { type: mongoose.Schema.Types.ObjectId, ref: 'Novels' },
   name: String,
   chapter_num: Number,
   content: String,

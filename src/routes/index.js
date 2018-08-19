@@ -1,7 +1,7 @@
 import express from 'express';
 import authenticationRoute from './auth';
 import categoriesRoute from './categories';
-import booksRoute from './books';
+import novelsRoute from './novels';
 import usersRoute from './users';
 import postsRoute from './posts';
 import marksRoute from './marks';
@@ -11,10 +11,10 @@ export default (app) => {
   const router = express.Router();
 
   router.use('/categories', categoriesRoute);
-  router.use('/books', booksRoute);
+  router.use('/novels', novelsRoute);
+  router.use('/chapters', chaptersRoute);
   router.use('/auth', authenticationRoute);
   router.use('/users', usersRoute);
-  router.use('/chapters', chaptersRoute);
   router.use('/posts', postsRoute);
   router.use('/marks', marksRoute);
   router.get('/', (req, res) => {
