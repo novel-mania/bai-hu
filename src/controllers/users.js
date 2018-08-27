@@ -39,7 +39,7 @@ class UsersController {
   }
 
   update(id, data) {
-    return this.Users.findOneAndUpdate({ _id: id }, data)
+    return this.Users.findOneAndUpdate({ _id: id }, data, { new: true })
       .then(user => ({
         data: format(user),
       }));

@@ -10,3 +10,7 @@ services:
       - mongodb
   mongodb:
     image: mongo:3.6.3
+    volumes:
+      - datadb:/data/db
+volumes:
+  datadb:

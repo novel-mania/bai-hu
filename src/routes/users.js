@@ -31,6 +31,12 @@ router.route('/:id')
       .then(user => res.status(200).send(user))
       .catch(err => res.status(400).send(err.message));
   })
+  .patch((req, res) => {
+    const { params: { id } } = req;
+    return usersController.update(id, req.body)
+      .then(user => res.status(200).send(user))
+      .catch(err => res.status(400).send(err.message));
+  })
   .delete((req, res) => {
     const { params: { id } } = req;
     return usersController.remove(id)

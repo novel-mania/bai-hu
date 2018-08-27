@@ -14,3 +14,7 @@ services:
       - /home/app/api/node_modules
   mongodb:
     image: mongo:3.6.3
+    volumes:
+      - datadb:/data/db
+volumes:
+  datadb:
