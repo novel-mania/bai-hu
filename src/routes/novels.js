@@ -36,6 +36,12 @@ router.route('/:id')
       .then(book => res.status(200).send(book))
       .catch(err => res.status(400).send(err.message));
   })
+  .patch((req, res) => {
+    const { params: { id } } = req;
+    return novelsController.update(id, req.body)
+      .then(book => res.status(200).send(book))
+      .catch(err => res.status(400).send(err.message));
+  })
   .delete((req, res) => {
     const { params: { id } } = req;
     return novelsController.remove(id)

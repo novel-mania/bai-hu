@@ -17,7 +17,7 @@ router.route('/')
       .catch(err => res.status(400).send(err.message));
   });
 
-router.route('/:novel/chapters/:id')
+router.route('/:id')
   .get((req, res) => {
     const { params: { id } } = req;
     return chaptersController.getById(id)
@@ -27,6 +27,12 @@ router.route('/:novel/chapters/:id')
   .put(schemaChapters, validatorMiddleware, (req, res) => {
     const { params: { id } } = req;
     return chaptersController.update(id, matchedData(req))
+      .then(chapter => res.status(200).send(chapter))
+      .catch(err => res.status(400).send(err.message));
+  })
+  .patch((req, res) => {
+    const { params: { id } } = req;
+    return chaptersController.update(id, req.body)
       .then(chapter => res.status(200).send(chapter))
       .catch(err => res.status(400).send(err.message));
   })
