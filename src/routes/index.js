@@ -6,6 +6,7 @@ import usersRoute from './users';
 import postsRoute from './posts';
 import marksRoute from './marks';
 import chaptersRoute from './chapters';
+import rolesRoute from './roles';
 
 export default (app) => {
   const router = express.Router();
@@ -17,6 +18,7 @@ export default (app) => {
   router.use('/users', usersRoute);
   router.use('/posts', postsRoute);
   router.use('/marks', marksRoute);
+  router.use('/roles', rolesRoute);
   router.get('/', (req, res) => {
     res.json({ msg: 'Plataforma Novel Mania' });
   });

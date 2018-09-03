@@ -56,7 +56,7 @@ class NovelsController {
       .then(novel => ({
         data: novel.chapters.map(formatChapter),
       }));
-}
+  }
 
   create(data) {
     const novel = new this.Novels(data);

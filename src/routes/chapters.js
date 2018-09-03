@@ -4,6 +4,7 @@ import schemaChapters from '../schemas/chapters';
 import validatorMiddleware from '../middlewares/validator';
 import Chapters from '../models/chapters';
 import Novels from '../models/novels';
+import ChaptersController from '../controllers/chapters';
 
 const router = express.Router();
 const chaptersController = new ChaptersController(Novels, Chapters);

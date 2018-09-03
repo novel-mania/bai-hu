@@ -18,7 +18,7 @@ class UsersController {
   get() {
     return this.Users.find({})
       .then(users => ({
-        data: users.map(format)
+        data: users.map(format),
       }));
   }
 
