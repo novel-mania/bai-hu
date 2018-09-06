@@ -4,9 +4,10 @@ import schemaUsers from '../schemas/users';
 import validatorMiddleware from '../middlewares/validator';
 import UsersController from '../controllers/users';
 import Users from '../models/users';
+import Roles from '../models/roles';
 
 const router = express.Router();
-const usersController = new UsersController(Users);
+const usersController = new UsersController(Users, Roles);
 
 router.route('/')
   .get((req, res) =>

@@ -4,7 +4,10 @@ const format = chapter => ({
   novel: chapter.novel,
   chapter_num: chapter.chapter_num,
   content: chapter.content,
-  translators: chapter.translators,
+  translators: chapter.translators.map(translator => ({
+    id: translator.id,
+    name: translator.name,
+  })),
   editors: chapter.editors,
   volume: {
     name: chapter.volume.name,
@@ -24,6 +27,7 @@ class ChaptersController {
     if (novel) where.novel = novel;
     return this.Chapters.find(where)
       .populate('novel')
+      .populate('translators')
       .then(chapters => ({
         data: chapters.map(format),
       }));
@@ -31,9 +35,10 @@ class ChaptersController {
 
   getById(id) {
     return this.Chapters.findOne({ _id: id })
+      .populate('translators')
       .then(chapter => ({
-        data: format(chapter),
-      }));
+          data: format(chapter),
+        }));
   }
 
   async create(novelId, data) {

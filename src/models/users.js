@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt';
 
 const schema = new mongoose.Schema({
   name: String,
+  username: String,
   profile_photo: String,
   email: String,
   password: String,
