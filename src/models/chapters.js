@@ -12,7 +12,7 @@ const schema = new mongoose.Schema({
   content: String,
   likes: Number,
   translators: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }],
-  reviewers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }],
+  editors: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }],
   volume: volumeSchema,
   marks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Marks' }],
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comments' }],

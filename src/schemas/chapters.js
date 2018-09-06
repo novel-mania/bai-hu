@@ -21,10 +21,10 @@ export default checkSchema({
     in: 'body',
     errorMessage: 'Property must be passed: translators',
   },
-  reviewers: {
+  editors: {
     exists: true,
     in: 'body',
-    errorMessage: 'Property must be passed: reviewers',
+    errorMessage: 'Property must be passed: editors',
   },
   volume: {
     exists: true,

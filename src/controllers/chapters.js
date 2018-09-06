@@ -5,7 +5,7 @@ const format = chapter => ({
   chapter_num: chapter.chapter_num,
   content: chapter.content,
   translators: chapter.translators,
-  reviewers: chapter.reviewers,
+  editors: chapter.editors,
   volume: {
     name: chapter.volume.name,
     volume_num: chapter.volume.volume_num,
