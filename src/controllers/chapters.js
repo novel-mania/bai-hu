@@ -8,10 +8,13 @@ const format = chapter => ({
     id: translator.id,
     name: translator.name,
   })),
-  editors: chapter.editors,
+  editors: chapter.editors.map(editor => ({
+    id: editor.id,
+    name: editor.name,
+  })),
   volume: {
     name: chapter.volume.name,
-    volume_num: chapter.volume.volume_num,
+    number: chapter.volume.number,
   },
   comments: chapter.comments,
 });
@@ -28,6 +31,7 @@ class ChaptersController {
     return this.Chapters.find(where)
       .populate('novel')
       .populate('translators')
+      .populate('editors')
       .then(chapters => ({
         data: chapters.map(format),
       }));
@@ -36,9 +40,10 @@ class ChaptersController {
   getById(id) {
     return this.Chapters.findOne({ _id: id })
       .populate('translators')
+      .populate('editors')
       .then(chapter => ({
-          data: format(chapter),
-        }));
+        data: format(chapter),
+      }));
   }
 
   async create(novelId, data) {
@@ -62,9 +67,7 @@ class ChaptersController {
 
   update(id, data) {
     return this.Chapters.findOneAndUpdate({ _id: id }, data)
-      .then(chapter => ({
-        data: format(chapter),
-      }));
+      .then(() => this.getById(id));
   }
 
   remove(id) {

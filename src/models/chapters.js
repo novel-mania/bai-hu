@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const volumeSchema = new mongoose.Schema({
   name: String,
-  volume_num: Number,
+  number: Number,
 });
 
 const schema = new mongoose.Schema({

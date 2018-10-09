@@ -31,9 +31,4 @@ export default checkSchema({
     in: 'body',
     errorMessage: 'Property must be passed: volume',
   },
-  comments: {
-    exists: true,
-    in: 'body',
-    errorMessage: 'Property must be passed: comments',
-  },
 });

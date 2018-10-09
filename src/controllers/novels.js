@@ -68,7 +68,7 @@ class NovelsController {
   }
 
   update(id, data) {
-    return this.Novels.findOneAndUpdate({ _id: id }, data)
+    return this.Novels.findOneAndUpdate({ _id: id }, data, { new: true })
       .then(novel => ({
         data: format(novel),
       }));
